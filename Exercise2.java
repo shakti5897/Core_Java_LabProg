@@ -1,26 +1,26 @@
-package lab5;
+package lab6;
+
 import java.util.*;
 
-public class Exercise2 {
+class Exercise2 {
+  static HashMap<Character,Integer> countChar(char[] str){
+    HashMap<Character,Integer>map=new HashMap<>();
+    for(char c:str)
+    if(map.containsKey(c))
+      map.put(c,map.get(c) + 1);
+    else 
+      map.put(c,1);
+    return map;
+  }
 
 
-	  public static void main(String[] args){
-	    Scanner s= new Scanner(System.in);
-	    String c;
-	    System.out.print("First Name:");
-	    String fname=s.nextLine();
-	    System.out.print("Second Name: ");
-	    String lname=s.nextLine();
-
-	    try{
-	      if(fname.isEmpty()||lname.isEmpty()){
-	      throw new Exception("First name and last name can't be blank");     
-	      }
-	      else
-	      System.out.println("Name:"+fname+" "+lname);
-	    }
-	    catch(Exception e){
-	      System.out.println(e);
-	    }
-	  }
-	} 
+  public static void main(String[] args) {    
+    Scanner scan=new Scanner(System.in);
+    char[] n=scan.next().toCharArray();
+    HashMap<Character,Integer>map=new HashMap<>();
+    map=countChar(n);
+    for(Map.Entry<Character,Integer>e:map.entrySet()){
+      System.out.println(e.getKey()+" "+e.getValue());
+    }
+  }
+}

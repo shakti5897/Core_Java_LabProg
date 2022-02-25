@@ -1,27 +1,25 @@
-package lab5;
+package lab6;
+
 import java.util.*;
 
-
-
-class EmployeeException extends Exception {
-    public EmployeeException(String x)
-    {
-      super(x);
+class Exercise3 {
+  static HashMap<Integer,Integer> getSquares(int[] str){
+    HashMap<Integer,Integer>map=new HashMap<>();
+    for(int c:str)
+      map.put(c,c*c);
+    return map;
+  }
+  public static void main(String[] args) {    
+    Scanner scan=new Scanner(System.in);
+    int n=scan.nextInt();
+    int arr[]=new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=scan.nextInt();
     }
-}
-class Excercise3 {
-  public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    int n=sc.nextInt();
-    try{
-      if(n<3000)
-      throw new EmployeeException("Salary less than 3000");
-      else 
-      System.out.print("Salary:"+n);
-    }
-    catch(EmployeeException e){
-      System.out.println(e.getMessage());
-    }
+    HashMap<Integer,Integer>m=new HashMap<>();
+    m=getSquares(arr);
+    for(Map.Entry<Integer,Integer>e:m.entrySet())
+    System.out.println(e.getKey()+" "+e.getValue());
 
   }
 } 

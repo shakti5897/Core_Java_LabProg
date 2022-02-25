@@ -1,38 +1,34 @@
-import java.io.*;
-class Exercise4
-{
-	public static void main(String args[])
-	{
-		try
-		{
-			int lines=0,chars=0,words=0;
-			int code=0;
-			FileInputStream fis = new FileInputStream("sample.txt");
-			while(fis.available()!=0)
-			{
-				code = fis.read();
-				if(code!=10)
-				chars++;
-				if(code==32)
-				words++;
-				if(code==13)
-				{
-					lines++;
-					words++;
-				}
-			}
-			System.out.println("No.of characters = "+chars);
-			System.out.println("No.of words = "+(words+1));
-			System.out.println("No.of lines = "+(lines+1));
-			fis.close();
-		}
-		catch(FileNotFoundException e)
-		{
-			System.out.println("Cannot find the specified file...");
-		}
-		catch(IOException i)
-		{
-			System.out.println("Cannot read file...");
-		}
-	}
-} 
+package lab6;
+
+import java.util.*;
+
+class Exercise4 {
+  static HashMap<Integer,String> getStudents(HashMap<Integer,Integer>map){
+    HashMap<Integer,String>mp=new HashMap<>();
+    for(Map.Entry<Integer,Integer>e:map.entrySet()){
+      int x=e.getValue();
+      int y=e.getKey();
+      if(x>=90)
+      mp.put(y,"Gold");
+      else if(x>=80)
+      mp.put(y,"Silver");
+      else 
+      mp.put(y,"Bronze");
+    }
+    return mp;
+  }
+  public static void main(String[] args) {
+    Scanner scan=new Scanner(System.in);
+    int n=scan.nextInt();
+    HashMap<Integer,Integer>map=new HashMap<>();
+    for(int i=0;i<n;i++){
+      int f=scan.nextInt();
+      int s=scan.nextInt();
+      map.put(f,s);
+    }
+    HashMap<Integer,String> s=getStudents(map);
+    for(Map.Entry<Integer,String>e:s.entrySet()){
+      System.out.println(e.getKey()+" "+e.getValue());
+    }
+  }
+}
