@@ -1,26 +1,31 @@
-package lab6;
-
-import java.util.*;
-
-class Exercise2 {
-  static HashMap<Character,Integer> countChar(char[] str){
-    HashMap<Character,Integer>map=new HashMap<>();
-    for(char c:str)
-    if(map.containsKey(c))
-      map.put(c,map.get(c) + 1);
-    else 
-      map.put(c,1);
-    return map;
-  }
+package lab8;
+import java.util.Date;
 
 
-  public static void main(String[] args) {    
-    Scanner scan=new Scanner(System.in);
-    char[] n=scan.next().toCharArray();
-    HashMap<Character,Integer>map=new HashMap<>();
-    map=countChar(n);
-    for(Map.Entry<Character,Integer>e:map.entrySet()){
-      System.out.println(e.getKey()+" "+e.getValue());
-    }
-  }
+class TimerDisplay implements Runnable {
+
+	public void run() {
+		for( ;  ;  ) {
+			try {
+				Date d = new Date();
+				System.out.println(d);
+				Thread.sleep(10000);
+			}
+			catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+public class Exercise2 {
+
+	public static void main(String[] args) {
+
+		TimerDisplay td = new TimerDisplay();
+		Thread t = new Thread(td);
+		t.start();
+
+	}
 }
