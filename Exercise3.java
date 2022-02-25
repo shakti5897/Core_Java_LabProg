@@ -1,25 +1,24 @@
-package lab6;
+package lab9;
 
 import java.util.*;
 
-class Exercise3 {
-  static HashMap<Integer,Integer> getSquares(int[] str){
-    HashMap<Integer,Integer>map=new HashMap<>();
-    for(int c:str)
-      map.put(c,c*c);
-    return map;
-  }
-  public static void main(String[] args) {    
-    Scanner scan=new Scanner(System.in);
-    int n=scan.nextInt();
-    int arr[]=new int[n];
-    for(int i=0;i<n;i++){
-      arr[i]=scan.nextInt();
-    }
-    HashMap<Integer,Integer>m=new HashMap<>();
-    m=getSquares(arr);
-    for(Map.Entry<Integer,Integer>e:m.entrySet())
-    System.out.println(e.getKey()+" "+e.getValue());
+interface intf3{
+	boolean authID(String userID, String passID);
+}
+public class Exercise3 {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
 
-  }
+		intf3 f1 = (uID, pID) -> {
+			if(uID.equals("123@xyz.com") && pID.equals("password"))
+				return true;
+			else
+				return false;
+		};
+
+		String userId = sc.next();
+		String passId = sc.next();
+
+		System.out.println("Authentication is: " + f1.authID(userId, passId));
+	}
 } 
